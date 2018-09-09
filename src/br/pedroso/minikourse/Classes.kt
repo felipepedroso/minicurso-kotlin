@@ -3,15 +3,46 @@ package br.pedroso.minikourse
 import java.time.LocalDateTime
 
 fun main(args: Array<String>) {
+    /**
+     * Definindo uma classe
+     */
     val person1 = Person("Felipe", 1987)
     println("Name: ${person1.name} Age: ${person1.age}")
 
-
+    /**
+     * Interfaces
+     */
     val shape1: Shape = Circle(10.0)
     val shape2: Shape = Square(10.0)
 
-    println("${shape1.javaClass.simpleName} area: ${shape1.getArea()}")
-    println("${shape2.javaClass.simpleName} area: ${shape2.getArea()}")
+    shape1.printArea()
+    shape2.printArea()
+
+    /**
+     * Classes abstratas
+     */
+
+    val animal1: Animal = Dog()
+    val animal2: Animal = Cat()
+    animal1.doSound()
+    animal2.doSound()
+
+    /**
+     * Smart Casts
+     */
+    // animal1.howl() // Não compila, precisamos fazer um cast
+
+    (animal1 as Dog).howl()
+
+    if (animal1 is Dog) {
+        animal1.howl()
+    }
+
+    when (animal2) {
+        is Dog -> animal2.howl()
+        is Cat -> animal2.pur()
+        else -> animal2.doSound()
+    }
 }
 
 /**
@@ -34,6 +65,11 @@ class Person(val name: String, private val birthYear: Int) {
  */
 interface Shape {
     fun getArea(): Double
+
+    fun printArea() {
+        val formattedArea = "%.2f".format(getArea())
+        println("${javaClass.simpleName} area: $formattedArea")
+    }
 }
 
 /**
@@ -53,11 +89,34 @@ open class Rectangle(private val width: Double, private val height: Double) : Sh
 }
 
 /**
- * TODO: Criando uma classe com
+ * Criando uma classe sem propriedades
  */
 class Square(side: Double) : Rectangle(side, side)
 
 /**
- * TODO: Criando uma classe abstrata
+ * Criando uma classe abstrata
  */
+abstract class Animal {
+    protected abstract val sound: String
+
+    fun doSound() {
+        println("${javaClass.simpleName} says $sound.")
+    }
+}
+
+class Dog : Animal() {
+    override val sound = "AU"
+
+    fun howl() {
+        println("${javaClass.simpleName} says AUUUUUUUUUU")
+    }
+}
+
+class Cat : Animal() {
+    override val sound = "MIAU"
+
+    fun pur() {
+        println("${javaClass.simpleName} says RRRRRRRRRR")
+    }
+}
 
