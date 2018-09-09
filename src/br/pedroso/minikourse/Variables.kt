@@ -1,4 +1,4 @@
-package br.pedroso.minikourse._01introduction
+package br.pedroso.minikourse
 
 fun main(args: Array<String>) {
     // Criando uma variável imutável, que não pode ser alterada depois de inicializada

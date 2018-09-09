@@ -1,4 +1,4 @@
-package br.pedroso.minikourse._01introduction
+package br.pedroso.minikourse
 
 fun main(args: Array<String>) {
     val a = 42
@@ -6,10 +6,14 @@ fun main(args: Array<String>) {
 
     printSum(a, b)
     printMultiply(a, b)
+    printMultiply(b = 10, a = 15) // Chamando a função com parâmetros nomeados
     println("Max: ${max(a, b)}")
 
     val average = average(a, b, 44, 99, 123)
     println("Average: $average")
+
+    printName()
+    printName("Felipe")
 }
 
 
@@ -53,3 +57,11 @@ fun average(vararg numbers: Int): Float {
 
     return 0F
 }
+
+/**
+ * Função com valor padrão
+ */
+fun printName(name: String = "Anônimo") {
+    println(name)
+}
+
