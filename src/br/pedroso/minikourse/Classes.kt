@@ -48,7 +48,7 @@ fun main(args: Array<String>) {
 /**
  * Definindo uma classe com um atributo público e um atributo privado
  */
-class Person(val name: String, private val birthYear: Int) {
+ class Person(val name: String, private val birthYear: Int) {
     init {
         println("Initializing Person with name $name")
     }
@@ -58,6 +58,10 @@ class Person(val name: String, private val birthYear: Int) {
         get() {
             return LocalDateTime.now().year - birthYear
         }
+
+    var isMarried: Boolean = false
+        private set // Atribuição apenas dentro da classe
+
 }
 
 /**

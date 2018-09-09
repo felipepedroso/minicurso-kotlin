@@ -4,6 +4,8 @@ fun main(args: Array<String>) {
     val a = 42
     val b = 12
 
+    val c = sum(42, 18)
+
     printSum(a, b)
     printMultiply(a, b)
     printMultiply(b = 10, a = 15) // Chamando a função com parâmetros nomeados
