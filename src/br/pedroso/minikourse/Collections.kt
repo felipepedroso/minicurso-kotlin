@@ -15,7 +15,7 @@ fun lists() {
     printListStatus(list)
 
     val position = 3
-    println("List element at position $position: ${list[3]}") // Imprime o elemento na terceira posição
+    println("Print element at position $position: ${list[position]}") // Imprime o elemento na terceira posição
     val number = 10
     println("Does the list contains the number $number? ${list.contains(number)}") // Imprime se a lista contém o valor "10" (false)
 
@@ -34,6 +34,8 @@ fun mutableLists() {
     // Adicionando um novo elemento
     val newValue = 10
     list.add(newValue)
+
+    list += 15
     printListStatus(list)
 
     // Removendo um elemento no índice 0
@@ -67,6 +69,8 @@ fun sets() {
     // Tentando adicionar um elemento que já existe no set
     mutableSet.add(1)
 
+    mutableSet += 15
+
     printSetStatus(mutableSet)
 }
 
@@ -97,8 +101,13 @@ fun maps() {
     val mutableMap = map.toMutableMap()
     printMapStatus(mutableMap)
 
-    // Adicionando um novo elemento no map
+    // Alterando um elemento no map
+    mutableMap["Third"] = 12
+    printMapStatus(mutableMap)
+
+    // Adicionando um novos elementos no map
     mutableMap["Sixth"] = 6
+    mutableMap += "Seventh" to 7
     printMapStatus(mutableMap)
 
     // Removendo um elemento no mapa

@@ -3,17 +3,46 @@ package br.pedroso.minikourse
 import java.time.LocalDateTime
 
 fun main(args: Array<String>) {
-    filter()
+    // Filtrando pessoas maiores de 18 anos
+    val adults = userList.filter { it.age >= 18}
+    println("Lista de Adultos: $adults")
 
+    // Calculando a idade média de todos os usuários
+    val averageAge = userList.map { it.age }.average()
+    println(averageAge)
 
+    // Agrupando as pessoas pelo estado civil
+    val groupsMaritalStatus = userList.groupBy { it.isMarried }
+    println(groupsMaritalStatus)
+
+    // Descobrindo a pessoa mais nova
+    val youngestPerson = userList.minBy { it.age }
+    println(youngestPerson)
+
+    // Descobrindo a pessoa mais velha
+    val oldestPerson = userList.maxBy { it.age }
+    println(oldestPerson)
+
+    // Ordenando a lista de usuários pelo nome
+    val usersSortedByName = userList.sortedBy { it.name }
+    println(usersSortedByName)
+
+    // Ordenando a lista pelo nome de forma descrescente
+    val usersSortedByDescendingName = userList.sortedByDescending { it.name }
+    println(usersSortedByDescendingName)
+
+    // Obtendo um set com nomes (sem repetição)
+    val uniqueNames = userList.map { it.name }.toSet()
+    println(uniqueNames)
+
+    // Exibindo os caracteres usados para escrever os nomes das pessoas
+    val uniqueCharacters = userList
+            .flatMap { it.surname.toList() }
+            .map { it.toUpperCase() }
+            .toSet()
+            .sorted()
+    println(uniqueCharacters)
 }
-
-fun filter() {
-    val result = userList.filter { it.name.startsWith("C") }.sortedBy { it.name }.map { it.name }
-    println(result)
-}
-
-
 
 val userList = listOf(
         User("Felipe", "Pedroso", 1987, false),
